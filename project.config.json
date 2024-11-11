@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "mini-1",
-  "description": "first mini pro",
+  "projectname": "mini-agent",
+  "description": "mini-agent",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

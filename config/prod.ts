@@ -28,5 +28,5 @@ export default {
     //       postProcess: (context) => ({ ...context, outputPath: path.join(staticDir, 'index.html') })
     //     }))
     // }
-  }
-} satisfies UserConfigExport<'vite'>
+  },
+} satisfies UserConfigExport<"webpack5">;

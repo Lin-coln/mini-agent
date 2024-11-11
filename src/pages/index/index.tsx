@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { View, Button, Text, Input } from "@tarojs/components";
+import { View, Button, Input } from "@tarojs/components";
 
-import "./index.css";
+import "./index.scss";
 import Taro from "@tarojs/taro";
 
 export default function Index() {
@@ -78,6 +78,7 @@ export default function Index() {
       />
 
       <Button
+        className="bg-amber-400"
         style={{ width: "100%" }}
         loading={loading}
         onClick={handleSubmit}
