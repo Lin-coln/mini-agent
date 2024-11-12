@@ -1,92 +1,71 @@
 import { useState } from "react";
-import { View, Button, Input } from "@tarojs/components";
+import { View, Button, Input, Text, Textarea } from "@tarojs/components";
 
 import "./index.scss";
-import Taro from "@tarojs/taro";
+import { useCozeStore } from "./useCozeStore";
 
 export default function Index() {
-  const [token, setToken] = useState("");
+  const { requestCozeApi, token: currentToken } = useCozeStore();
+  const [token, setToken] = useState(currentToken);
   const [value, setValue] = useState("林肯");
-  const [result, setResult] = useState("nothing here");
+  const [result, setResult] = useState("nothing");
   const [loading, setLoading] = useState(false);
+
+  const isCanSubmit = token && value && !loading;
+
   const handleSubmit = async () => {
-    if (!token || !value) {
-      return;
-    }
+    if (!token || !value) return;
     try {
-      const data = await new Promise((resolve, reject) => {
-        console.log(`requesting...`);
-        setLoading(true);
-        setResult(`requesting...`);
-        Taro.request({
-          method: "POST",
-          url: `https://api.coze.cn/v1/workflow/run`,
-          data: {
-            workflow_id: "7435701312569163813",
-            BOT_USER_INPUT: value,
-          },
-          header: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          success: (res) => {
-            resolve(res.data);
-          },
-          fail: (err) => {
-            reject(err);
-          },
-        });
+      setLoading(true);
+      const result = await requestCozeApi({
+        workflow_id: "7435701312569163813",
+        input: value,
+        token: token,
       });
-      console.log(`got data.`, data);
-      setResult(JSON.stringify(data));
+      setResult(result.output);
     } catch (error) {
-      console.warn(`failed`, error);
+      if (token !== currentToken) setToken(currentToken);
       setResult(error.message);
     } finally {
       setLoading(false);
     }
   };
-  const inputStyle = {
-    boxShadow: "inset 0 0 0 1px #dfdfdf",
-    padding: `8px 12px`,
-    minHeight: 28,
-    borderRadius: 6,
-  };
   return (
-    <View
-      className="index"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        padding: 8,
-      }}
-    >
+    <View className="flex flex-col items-stretch gap-4 p-2">
+      <Text className="px-2 text-sm -mb-2">Token</Text>
       <Input
         type="text"
-        placeholder="输入Token"
+        password={true}
         value={token}
         onInput={(event) => setToken(event.detail.value)}
-        style={inputStyle}
+        className="ring-1 ring-neutral-300 px-2 py-2 h-6 rounded-md"
       />
-      <Input
-        type="text"
-        placeholder="输入提示"
+      <Text className="px-2 text-sm -mb-2">Prompts</Text>
+      <Textarea
+        autoHeight
         value={value}
         onInput={(event) => setValue(event.detail.value)}
-        style={inputStyle}
+        className="ring-1 ring-neutral-300 px-2 py-2 w-full box-border min-h-16 rounded-md"
       />
-
       <Button
-        className="bg-amber-400"
-        style={{ width: "100%" }}
+        className="bg-amber-400 w-full"
         loading={loading}
         onClick={handleSubmit}
+        disabled={!isCanSubmit}
       >
-        提交
+        Submit
       </Button>
-
-      <View style={{ padding: 4 }}>{result}</View>
+      <Text className="px-2 text-sm -mb-2">Result:</Text>
+      <View className="px-2 w-full">
+        {result}
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur
+        culpa doloremque eius ex explicabo, facere fugiat id iure libero nisi
+        officiis quae quaerat qui quo ratione repellendus sit sunt ut! Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio
+        dolor dolore eum fugit, impedit ipsum molestiae mollitia, nam nobis
+        numquam odio quidem similique tempora voluptates! Nam quisquam quod
+        rerum.
+      </View>
     </View>
   );
 }
