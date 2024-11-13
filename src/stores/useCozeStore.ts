@@ -22,6 +22,7 @@ export const useCozeStore = () => {
     requestCozeApi: async (options: {
       token?: string;
       workflow_id: string;
+      bot_id?: string;
       input: string;
     }) => {
       const opts = { token: token, ...options };
@@ -37,6 +38,7 @@ async function requestCozeApi(options: {
   token: string;
   workflow_id: string;
   input: string;
+  bot_id?: string;
 }) {
   const result = await new Promise<any>((resolve, reject) => {
     console.log(`[coze::request] requesting...`);
@@ -45,7 +47,10 @@ async function requestCozeApi(options: {
       url: `https://api.coze.cn/v1/workflow/run`,
       data: {
         workflow_id: options.workflow_id,
-        BOT_USER_INPUT: options.input,
+        bot_id: options.bot_id,
+        parameters: {
+          BOT_USER_INPUT: options.input,
+        },
       },
       header: {
         Authorization: `Bearer ${options.token}`,

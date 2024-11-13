@@ -1,7 +1,7 @@
 import { Component, PropsWithChildren } from "react";
 import { Provider } from "mobx-react";
 
-import counterStore from "./store/counter";
+import counterStore from "./stores/counter";
 
 import "./app.scss";
 
