@@ -29,7 +29,7 @@ export default function General() {
     }
   };
   return (
-    <View className="flex flex-col items-stretch gap-4 px-2 py-8">
+    <View className="flex flex-col items-stretch gap-4 px-2 py-8 h-screen">
       <Text className="px-2 mt-2 text-lg font-bold">General</Text>
       <Text className="px-2 text-sm -mb-2">Token</Text>
       <Input

@@ -1,8 +1,8 @@
-import { useCozeStore } from "../stores/useCozeStore";
+import { useCozeStore } from "../../stores/useCozeStore";
 import { useState } from "react";
-import { Button, Input, Text, Textarea, View } from "@tarojs/components";
+import { Button, Input, Text, View } from "@tarojs/components";
 
-export default function Elements() {
+export default function Index() {
   const { requestCozeApi, token: currentToken } = useCozeStore();
   const [token, setToken] = useState(currentToken);
   const [value, setValue] = useState("林肯");
@@ -39,7 +39,7 @@ export default function Elements() {
     }
   };
   return (
-    <View className="flex flex-col items-stretch gap-4 px-2 py-8 border-t-2 border-neutral-200">
+    <View className="flex flex-col items-stretch gap-4 px-2 py-8 border-t-2 border-neutral-200 h-screen">
       <Text className="px-2 mt-4 text-lg font-bold">Elements</Text>
       <Text className="px-2 text-sm -mb-2">Token</Text>
       <Input
