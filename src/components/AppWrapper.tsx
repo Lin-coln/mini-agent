@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { PageMeta, View } from "@tarojs/components";
 import { NavigationBar as Nav } from "@tarojs/components";
 import NavigationBar from "./NavigationBar";
+import { BACKGROUND_COLOR, BORDER_COLOR } from "../constants";
 
 export default function AppWrapper({
   title,
@@ -11,12 +12,12 @@ export default function AppWrapper({
   children: ReactNode;
 }) {
   const dark = true;
-  const backgroundColor = "#1a1a1a";
   const offsetTop = 60;
   const navigationBarHeight = 32;
   const navigationBarPadding = 4;
   const offsetBottom = 102;
-  const borderColor = "#7F7F7F14";
+  const backgroundColor = BACKGROUND_COLOR;
+  const borderColor = BORDER_COLOR;
 
   return (
     <>

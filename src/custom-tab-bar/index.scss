@@ -9,7 +9,7 @@
     box-sizing: border-box;
     padding: 24px;
     padding-bottom: max(24px, env(safe-area-inset-bottom));
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: #1e1e1ecc;
     //background-color: #1a1a1acc;
     position: fixed;
     bottom: 0;
@@ -30,10 +30,10 @@
 
   &-item {
     color: rgba(255, 255, 255, 0.4);
-    background-color: rgba(127, 127, 127, 0.04);
+    background-color: #7f7f7f0a;
     &--active {
       color: rgba(255, 255, 255, 0.8);
-      background-color: rgba(127, 127, 127, 0.08);
+      background-color: #7f7f7f14;
       font-weight: bold;
     }
   }

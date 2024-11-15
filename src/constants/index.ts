@@ -17,3 +17,6 @@ export const APP_CONFIG = {
   pages: tab_items.map((item) => item.pagePath),
   tab_items: tab_items,
 };
+
+export const BORDER_COLOR = "#7F7F7F14";
+export const BACKGROUND_COLOR = "#1a1a1a";
