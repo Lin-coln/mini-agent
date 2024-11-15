@@ -8,6 +8,10 @@ module.exports = {
         framework: "react",
         ts: true,
         compiler: "webpack5",
+        target: {
+          ios: "13",
+          android: "8",
+        },
       },
     ],
   ],

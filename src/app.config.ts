@@ -1,28 +1,17 @@
+import { APP_CONFIG } from "./constants";
+
 export default defineAppConfig({
-  pages: [
-    "pages/index/index",
-    "pages/elements/index", // elements
-  ],
+  darkmode: true,
+  pages: APP_CONFIG.pages,
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
     navigationBarTitleText: "WeChat",
     navigationBarTextStyle: "black",
+    navigationStyle: "custom",
   },
   tabBar: {
     custom: true,
-    color: "#000000",
-    selectedColor: "#DC143C",
-    backgroundColor: "#ffffff",
-    list: [
-      {
-        pagePath: "pages/index/index",
-        text: "General",
-      },
-      {
-        pagePath: "pages/elements/index",
-        text: "Index",
-      },
-    ],
+    list: APP_CONFIG.tab_items,
   },
 });

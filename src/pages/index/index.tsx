@@ -1,34 +1,10 @@
-import {
-  NavigationBar,
-  PageMeta,
-  Picker,
-  ScrollView,
-  StickyHeader,
-  Swiper,
-  SwiperItem,
-  Switch,
-  View,
-} from "@tarojs/components";
-
-import "./index.scss";
-import General from "../../views/General";
-import { useEffect, useState } from "react";
+import ImageView from "./views/ImageView";
+import AppWrapper from "../../components/AppWrapper";
 
 export default function Index() {
-  const handleScrollToUpper = () => {};
-  const handleScroll = () => {};
-  const [foo, setFoo] = useState("xxx");
-
-  // useEffect(() => {
-  //   const page = Taro.getCurrentInstance().page;
-  //   console.log(page);
-  // }, []);
-
   return (
-    <Swiper className="h-screen">
-      <SwiperItem>
-        <General />
-      </SwiperItem>
-    </Swiper>
+    <AppWrapper title={"首页"}>
+      <ImageView />
+    </AppWrapper>
   );
 }
