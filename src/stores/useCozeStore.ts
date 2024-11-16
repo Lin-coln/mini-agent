@@ -19,6 +19,7 @@ export const useCozeStore = () => {
 
   return {
     token,
+    setToken,
     requestCozeApi: async (options: {
       token?: string;
       workflow_id: string;

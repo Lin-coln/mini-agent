@@ -1,6 +1,8 @@
 @use "../styles/variables" as *;
 
 .tab-bar {
+  $tab_bar_height: 120px;
+
   & {
     display: flex;
     justify-content: space-around;

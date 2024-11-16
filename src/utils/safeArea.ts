@@ -29,10 +29,6 @@ export function getSystemInfo() {
     ...res,
     bottomSafeHeight: 0,
   } as any;
-  Object.assign(result, {
-    screenWidth: Math.min(result.screenWidth, result.screenHeight),
-    screenHeight: Math.max(result.screenWidth, result.screenHeight),
-  });
   Object.assign(result, resolveMobileType(result));
 
   // 状态栏高度

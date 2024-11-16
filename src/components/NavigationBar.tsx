@@ -1,12 +1,31 @@
 import { View } from "@tarojs/components";
 import { getSystemInfo } from "../utils/safeArea";
 
-export default function NavigationBar({ title }) {
+export function useNavigationBarBounds() {
   const info = getSystemInfo();
 
-  const capsuleMarginBottom = info.navHeight - info.capsuleInfo.bottom;
-  const paddingTop =
-    info.navHeight - info.capsuleInfo.height - 2 * capsuleMarginBottom;
+  const toolbarMiniPadding = 4;
+  const toolbarPadding = Math.max(
+    // capsule bottom margin
+    info.navHeight - info.capsuleInfo.bottom,
+    toolbarMiniPadding,
+  );
+  const navigationBarPaddingTop = Math.max(
+    info.capsuleInfo.top - toolbarPadding,
+    0,
+  );
+  const navigationBarHeight = info.capsuleInfo.bottom + toolbarPadding;
+
+  return {
+    navigationBarPaddingTop,
+    navigationBarHeight,
+    toolbarPadding,
+  };
+}
+
+export default function NavigationBar({ title }) {
+  const { navigationBarPaddingTop, navigationBarHeight, toolbarPadding } =
+    useNavigationBarBounds();
   return (
     <View
       className={[
@@ -14,18 +33,25 @@ export default function NavigationBar({ title }) {
         `flex flex-row justify-center items-center`,
       ].join(" ")}
       style={{
-        paddingTop: paddingTop,
-        height: info.navHeight,
+        paddingTop: navigationBarPaddingTop,
+        height: navigationBarHeight,
       }}
     >
       <View
-        className={[
-          "font-bold",
-          `h-full w-full`,
-          `flex flex-row justify-center items-center`,
-        ].join(" ")}
+        className={[`h-full w-full`].join(" ")}
+        style={{
+          padding: toolbarPadding,
+        }}
       >
-        {title}
+        <View
+          className={[
+            `h-full w-full`,
+            `flex flex-row justify-center items-center`,
+            "font-bold",
+          ].join(" ")}
+        >
+          {title}
+        </View>
       </View>
     </View>
   );

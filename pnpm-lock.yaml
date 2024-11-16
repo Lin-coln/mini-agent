@@ -53,6 +53,9 @@ dependencies:
   '@tarojs/taro':
     specifier: 4.0.7
     version: registry.npmmirror.com/@tarojs/taro@4.0.7(@tarojs/components@4.0.7)(@tarojs/helper@4.0.7)(@tarojs/shared@4.0.7)(@types/react@18.3.12)(postcss@8.4.48)(webpack@5.78.0)
+  clsx:
+    specifier: ^2.1.1
+    version: registry.npmmirror.com/clsx@2.1.1
   mobx:
     specifier: ^4.8.0
     version: registry.npmmirror.com/mobx@4.15.7
@@ -65,6 +68,9 @@ dependencies:
   react-dom:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react-dom@18.3.1(react@18.3.1)
+  react-icons:
+    specifier: ^5.3.0
+    version: registry.npmmirror.com/react-icons@5.3.0(react@18.3.1)
 
 devDependencies:
   '@babel/core':
@@ -109,9 +115,6 @@ devDependencies:
   babel-preset-taro:
     specifier: 4.0.7
     version: registry.npmmirror.com/babel-preset-taro@4.0.7(@babel/core@7.26.0)(@babel/preset-react@7.25.9)(react-refresh@0.11.0)
-  clsx:
-    specifier: ^2.1.1
-    version: registry.npmmirror.com/clsx@2.1.1
   eslint:
     specifier: ^8.12.0
     version: registry.npmmirror.com/eslint@8.57.1
@@ -5510,7 +5513,7 @@ packages:
     name: clsx
     version: 2.1.1
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   registry.npmmirror.com/color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-convert/-/color-convert-2.0.1.tgz}
@@ -12183,6 +12186,17 @@ packages:
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       react: registry.npmmirror.com/react@18.3.1
       scheduler: registry.npmmirror.com/scheduler@0.23.2
+    dev: false
+
+  registry.npmmirror.com/react-icons@5.3.0(react@18.3.1):
+    resolution: {integrity: sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-icons/-/react-icons-5.3.0.tgz}
+    id: registry.npmmirror.com/react-icons/5.3.0
+    name: react-icons
+    version: 5.3.0
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: registry.npmmirror.com/react@18.3.1
     dev: false
 
   registry.npmmirror.com/react-is@16.13.1:
