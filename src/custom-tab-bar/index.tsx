@@ -3,7 +3,7 @@ import Taro, { useRouter } from "@tarojs/taro";
 import "./index.scss";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { APP_CONFIG } from "../constants";
+import { APP_CONFIG } from "../utils/constant";
 
 const TAB_ITEMS = APP_CONFIG.tab_items.map((item) => ({
   pagePath: `/${item.pagePath}`,
@@ -18,7 +18,6 @@ export default function CustomTabBar() {
   });
 
   useEffect(() => {
-    console.log(router.path);
     const idx = TAB_ITEMS.findIndex((item) => item.pagePath === router.path);
     setSelected(idx >= 0 ? idx : 0);
   }, [router.path]);

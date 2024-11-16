@@ -1,4 +1,4 @@
-import { useCozeStore } from "../../stores/useCozeStore";
+import { useCozeStore } from "../../../stores/useCozeStore";
 import { useState } from "react";
 import { Button, Input, Text, Textarea, View } from "@tarojs/components";
 

@@ -1,8 +1,14 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { PageMeta, View } from "@tarojs/components";
 import { NavigationBar as Nav } from "@tarojs/components";
 import NavigationBar from "./NavigationBar";
-import { BACKGROUND_COLOR, BORDER_COLOR } from "../constants";
+import {
+  BACKGROUND_COLOR,
+  BORDER_COLOR,
+  TAB_BAR_HEIGHT,
+} from "../utils/constant";
+
+import { getSystemInfo } from "../utils/safeArea";
 
 export default function AppWrapper({
   title,
@@ -11,11 +17,13 @@ export default function AppWrapper({
   title: string;
   children: ReactNode;
 }) {
+  const info = getSystemInfo();
+  useEffect(() => {
+    console.log(info);
+  }, []);
+
   const dark = true;
-  const offsetTop = 60;
-  const navigationBarHeight = 32;
-  const navigationBarPadding = 4;
-  const offsetBottom = 102;
+  const offsetBottom = info.bottomSafeHeight + TAB_BAR_HEIGHT;
   const backgroundColor = BACKGROUND_COLOR;
   const borderColor = BORDER_COLOR;
 
@@ -32,17 +40,12 @@ export default function AppWrapper({
           backgroundColor={backgroundColor}
         />
       </PageMeta>
-      <NavigationBar
-        title={title}
-        offset={offsetTop}
-        height={navigationBarHeight}
-        padding={navigationBarPadding}
-      />
+      <NavigationBar title={title} />
       <View
         className="relative"
         style={{
           boxSizing: "border-box",
-          paddingTop: `calc(${offsetTop + navigationBarHeight + navigationBarPadding}px)`,
+          paddingTop: info.navHeight,
           height: `100vh`,
           paddingBottom: offsetBottom,
         }}
@@ -53,7 +56,7 @@ export default function AppWrapper({
         className={["fixed bottom-0 w-full", "backdrop-blur-xl"].join(" ")}
         style={{
           height: offsetBottom,
-          borderTop: `2px solid ${borderColor}`,
+          borderTop: `1px solid ${borderColor}`,
         }}
       ></View>
     </>

@@ -1,6 +1,6 @@
 import { Image, View } from "@tarojs/components";
 
-import sample from "../assets/sample_1.jpg";
+import sample from "../../../assets/sample_1.jpg";
 
 export default function ImageView() {
   const handleClick = () => {

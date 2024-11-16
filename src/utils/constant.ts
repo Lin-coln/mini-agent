@@ -20,3 +20,5 @@ export const APP_CONFIG = {
 
 export const BORDER_COLOR = "#7F7F7F14";
 export const BACKGROUND_COLOR = "#1a1a1a";
+
+export const TAB_BAR_HEIGHT = 64;

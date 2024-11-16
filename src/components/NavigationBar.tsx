@@ -1,6 +1,12 @@
 import { View } from "@tarojs/components";
+import { getSystemInfo } from "../utils/safeArea";
 
-export default function NavigationBar({ title, height, padding, offset }) {
+export default function NavigationBar({ title }) {
+  const info = getSystemInfo();
+
+  const capsuleMarginBottom = info.navHeight - info.capsuleInfo.bottom;
+  const paddingTop =
+    info.navHeight - info.capsuleInfo.height - 2 * capsuleMarginBottom;
   return (
     <View
       className={[
@@ -8,11 +14,19 @@ export default function NavigationBar({ title, height, padding, offset }) {
         `flex flex-row justify-center items-center`,
       ].join(" ")}
       style={{
-        paddingTop: offset - 4,
-        height: height + offset + padding,
+        paddingTop: paddingTop,
+        height: info.navHeight,
       }}
     >
-      <View className="font-bold">{title}</View>
+      <View
+        className={[
+          "font-bold",
+          `h-full w-full`,
+          `flex flex-row justify-center items-center`,
+        ].join(" ")}
+      >
+        {title}
+      </View>
     </View>
   );
 }

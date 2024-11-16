@@ -5,20 +5,19 @@ import { Button, Input, Text, View } from "@tarojs/components";
 export default function Index() {
   const { requestCozeApi, token: currentToken } = useCozeStore();
   const [token, setToken] = useState(currentToken);
-  const [value, setValue] = useState("林肯");
   const [result, setResult] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const isCanSubmit = token && value && !loading;
+  const isCanSubmit = token && !loading;
 
   const handleSubmit = async () => {
-    if (!token || !value) return;
+    if (!token) return;
     try {
       setLoading(true);
       const data = await requestCozeApi({
         workflow_id: "7436445370878001190",
         bot_id: "7436434756130783286",
-        input: value,
+        input: "value",
         token: token,
       });
 
