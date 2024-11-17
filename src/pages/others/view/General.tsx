@@ -8,8 +8,8 @@ import MiniTextarea from "../../../components/MiniTextarea";
 export default function General() {
   const invokeWorkflow = useCozeStore((state) => state.invokeWorkflow);
 
-  const [value, setValue] = useState("林肯");
-  const [result, setResult] = useState("nothing");
+  const [value, setValue] = useState("Lorem");
+  const [result, setResult] = useState("");
 
   const isCanSubmit = !!value;
 
@@ -44,7 +44,7 @@ export default function General() {
         }}
       />
       <Text className="px-2 text-sm -mb-2 text-neutral-100/60">Result</Text>
-      <View className="p-3 box-border w-full h-0 grow bg-neutral-950/30 text-neutral-100/60 rounded-md">
+      <View className="p-3 box-border w-full h-0 grow bg-neutral-950/30 text-neutral-100/60 rounded-md break-words text-balance">
         {result}
       </View>
     </View>

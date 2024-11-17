@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useCozeStore } from "../../stores/useCozeStore";
 import { useShallow } from "zustand/react/shallow";
 import MiniInput from "../../components/MiniInput";
-import Taro from "@tarojs/taro";
 import MiniButton from "../../components/MiniButton";
+import { promiseWithToast } from "../../utils";
 
 export default function Index() {
   const [currentToken, setCurrentToken] = useCozeStore(
@@ -51,26 +51,4 @@ export default function Index() {
       </View>
     </AppWrapper>
   );
-}
-
-async function promiseWithToast<T = any>(
-  opts: {
-    loading: string;
-    success: string;
-  },
-  promiseOrAsyncFunc: Promise<T> | (() => Promise<T>),
-): Promise<T> {
-  await Taro.showLoading({ title: opts.loading, mask: true });
-  const promise =
-    typeof promiseOrAsyncFunc === "function"
-      ? promiseOrAsyncFunc()
-      : promiseOrAsyncFunc;
-  const result = await promise;
-  Taro.hideLoading();
-  await Taro.showToast({
-    title: opts.success,
-    icon: "success",
-    duration: 2000,
-  });
-  return result;
 }
