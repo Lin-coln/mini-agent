@@ -7,7 +7,7 @@ interface MagicImageStore {
   generateNewImage(options: {
     image_url: string;
     prompt: string;
-  }): Promise<unknown>;
+  }): Promise<string>;
 }
 
 export const useMagicImageStore = create<MagicImageStore>((set, get) => {
@@ -29,20 +29,21 @@ export const useMagicImageStore = create<MagicImageStore>((set, get) => {
       return filePath;
     },
     async generateNewImage({ image_url, prompt }) {
-      const uploadFile = useCozeStore.getState().uploadFile;
-      const uploadResult = await uploadFile({
-        filePath: image_url,
-      });
+      // const uploadFile = useCozeStore.getState().uploadFile;
+      // const uploadResult = await uploadFile({
+      //   filePath: image_url,
+      // });
       const invokeWorkflow = useCozeStore.getState().invokeWorkflow;
       const result = await invokeWorkflow({
         workflow_id: "7436821443897769999",
         parameters: {
-          image: uploadResult.id,
+          // todo: image url issue
+          // image: uploadResult.id,
           prompt: prompt,
         },
       });
       console.log(`[magicImage] generate result`, result);
-      return result;
+      return result.output;
     },
   };
 });

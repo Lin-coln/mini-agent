@@ -2,6 +2,7 @@ import { Button, Image, Input, Textarea, View } from "@tarojs/components";
 import debounce from "../../../utils/debounce";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMagicImageStore } from "../../../stores/useMagicImageStore";
+import { promiseWithToast } from "../../../utils";
 
 export default function ImageView() {
   const selectTargetImage = useMagicImageStore((x) => x.selectTargetImage);
@@ -24,12 +25,14 @@ export default function ImageView() {
     setImageUrl(filePath);
   };
   const handleGenerate = async () => {
-    const result = await generateNewImage({
-      image_url: imageUrl,
-      prompt: value,
-    });
-    console.log(result);
-    // setImageUrl("");
+    const imageUrl = await promiseWithToast(
+      { loading: "generating..." },
+      generateNewImage({
+        image_url: "imageUrl",
+        prompt: value,
+      }),
+    );
+    setImageUrl(imageUrl);
   };
 
   const items = [
@@ -50,7 +53,6 @@ export default function ImageView() {
     },
     {
       label: "生成",
-      loading: true,
       hidden: !value.length || editing || !imageUrl,
       onClick: handleGenerate,
     },
@@ -156,8 +158,8 @@ function FullscreenInput({ visible, onVisibleChange, value, onValueChange }) {
         `p-4 box-border`,
         "pointer-events-none",
         ...(visible
-          ? ["bg-neutral-950/95", "opacity-100"]
-          : ["bg-neutral-950/95", "opacity-0"]),
+          ? ["bg-[#1a1a1ae5]", "opacity-100"]
+          : ["bg-[#1a1a1ae5]", "opacity-0"]),
       ].join(" ")}
       // onClick={() => visible && handleSetValue(!visible)}
     >
