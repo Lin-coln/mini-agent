@@ -53,24 +53,15 @@ dependencies:
   '@tarojs/taro':
     specifier: 4.0.7
     version: registry.npmmirror.com/@tarojs/taro@4.0.7(@tarojs/components@4.0.7)(@tarojs/helper@4.0.7)(@tarojs/shared@4.0.7)(@types/react@18.3.12)(postcss@8.4.48)(webpack@5.78.0)
-  clsx:
-    specifier: ^2.1.1
-    version: registry.npmmirror.com/clsx@2.1.1
-  mobx:
-    specifier: ^4.8.0
-    version: registry.npmmirror.com/mobx@4.15.7
-  mobx-react:
-    specifier: ^6.1.4
-    version: registry.npmmirror.com/mobx-react@6.3.1(mobx@4.15.7)(react-dom@18.3.1)(react@18.3.1)
   react:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react@18.3.1
   react-dom:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react-dom@18.3.1(react@18.3.1)
-  react-icons:
-    specifier: ^5.3.0
-    version: registry.npmmirror.com/react-icons@5.3.0(react@18.3.1)
+  zustand:
+    specifier: ^5.0.1
+    version: registry.npmmirror.com/zustand@5.0.1(@types/react@18.3.12)(react@18.3.1)
 
 devDependencies:
   '@babel/core':
@@ -5508,13 +5499,6 @@ packages:
     version: 1.0.4
     engines: {node: '>=0.8'}
 
-  registry.npmmirror.com/clsx@2.1.1:
-    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/clsx/-/clsx-2.1.1.tgz}
-    name: clsx
-    version: 2.1.1
-    engines: {node: '>=6'}
-    dev: false
-
   registry.npmmirror.com/color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-convert/-/color-convert-2.0.1.tgz}
     name: color-convert
@@ -10350,50 +10334,6 @@ packages:
     version: 1.4.5
     dev: false
 
-  registry.npmmirror.com/mobx-react-lite@2.2.2(mobx@4.15.7)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-2SlXALHIkyUPDsV4VTKVR9DW7K3Ksh1aaIv3NrNJygTbhXe2A9GrcKHZ2ovIiOp/BXilOcTYemfHHZubP431dg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-2.2.2.tgz}
-    id: registry.npmmirror.com/mobx-react-lite/2.2.2
-    name: mobx-react-lite
-    version: 2.2.2
-    peerDependencies:
-      mobx: ^4.0.0 || ^5.0.0
-      react: ^16.8.0
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      mobx: registry.npmmirror.com/mobx@4.15.7
-      react: registry.npmmirror.com/react@18.3.1
-      react-dom: registry.npmmirror.com/react-dom@18.3.1(react@18.3.1)
-    dev: false
-
-  registry.npmmirror.com/mobx-react@6.3.1(mobx@4.15.7)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-IOxdJGnRSNSJrL2uGpWO5w9JH5q5HoxEqwOF4gye1gmZYdjoYkkMzSGMDnRCUpN/BNzZcFoMdHXrjvkwO7KgaQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mobx-react/-/mobx-react-6.3.1.tgz}
-    id: registry.npmmirror.com/mobx-react/6.3.1
-    name: mobx-react
-    version: 6.3.1
-    peerDependencies:
-      mobx: ^5.15.4 || ^4.15.4
-      react: ^16.8.0 || 16.9.0-alpha.0
-    dependencies:
-      mobx: registry.npmmirror.com/mobx@4.15.7
-      mobx-react-lite: registry.npmmirror.com/mobx-react-lite@2.2.2(mobx@4.15.7)(react-dom@18.3.1)(react@18.3.1)
-      react: registry.npmmirror.com/react@18.3.1
-    transitivePeerDependencies:
-      - react-dom
-      - react-native
-    dev: false
-
-  registry.npmmirror.com/mobx@4.15.7:
-    resolution: {integrity: sha512-X4uQvuf2zYKHVO5kRT5Utmr+J9fDnRgxWWnSqJ4oiccPTQU38YG+/O3nPmOhUy4jeHexl7XJJpWDBgEnEfp+8w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mobx/-/mobx-4.15.7.tgz}
-    name: mobx
-    version: 4.15.7
-    dev: false
-
   registry.npmmirror.com/ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.0.0.tgz}
     name: ms
@@ -12186,17 +12126,6 @@ packages:
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       react: registry.npmmirror.com/react@18.3.1
       scheduler: registry.npmmirror.com/scheduler@0.23.2
-    dev: false
-
-  registry.npmmirror.com/react-icons@5.3.0(react@18.3.1):
-    resolution: {integrity: sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-icons/-/react-icons-5.3.0.tgz}
-    id: registry.npmmirror.com/react-icons/5.3.0
-    name: react-icons
-    version: 5.3.0
-    peerDependencies:
-      react: '*'
-    dependencies:
-      react: registry.npmmirror.com/react@18.3.1
     dev: false
 
   registry.npmmirror.com/react-is@16.13.1:
@@ -15072,4 +15001,29 @@ packages:
       tiny-case: registry.npmmirror.com/tiny-case@1.0.3
       toposort: registry.npmmirror.com/toposort@2.0.2
       type-fest: registry.npmmirror.com/type-fest@2.19.0
+    dev: false
+
+  registry.npmmirror.com/zustand@5.0.1(@types/react@18.3.12)(react@18.3.1):
+    resolution: {integrity: sha512-pRET7Lao2z+n5R/HduXMio35TncTlSW68WsYBq2Lg1ASspsNGjpwLAsij3RpouyV6+kHMwwwzP0bZPD70/Jx/w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zustand/-/zustand-5.0.1.tgz}
+    id: registry.npmmirror.com/zustand/5.0.1
+    name: zustand
+    version: 5.0.1
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react@18.3.12
+      react: registry.npmmirror.com/react@18.3.1
     dev: false

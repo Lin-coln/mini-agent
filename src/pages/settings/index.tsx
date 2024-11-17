@@ -2,9 +2,13 @@ import AppWrapper from "../../components/AppWrapper";
 import { Input, Text, View } from "@tarojs/components";
 import { useState } from "react";
 import { useCozeStore } from "../../stores/useCozeStore";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Index() {
-  const { setToken: setCurrentToken, token: currentToken } = useCozeStore();
+  const [currentToken, setCurrentToken] = useCozeStore(
+    useShallow((state) => [state.token, state.setToken]),
+  );
+
   const [token, setToken] = useState(currentToken);
 
   const handleApply = () => {

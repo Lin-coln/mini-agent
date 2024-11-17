@@ -1,10 +1,13 @@
 import { Button, Image, Input, Textarea, View } from "@tarojs/components";
-import sample from "../../../assets/sample_1.jpg";
 import debounce from "../../../utils/debounce";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Taro from "@tarojs/taro";
+import { useCozeStore } from "../../../stores/useCozeStore";
 
 export default function ImageView() {
+  const token = useCozeStore((state) => state.token);
+  const invokeWorkflow = useCozeStore((state) => state.invokeWorkflow);
+  const uploadFile = useCozeStore((state) => state.uploadFile);
   const [value, setValue] = useState(
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet nemo nisi! Commodi cumque dolore error excepturi exercitationem hic maxime, nam nesciunt, nobis obcaecati quia, repudiandae rerum voluptatum? Debitis, quidem?",
   );
@@ -18,19 +21,35 @@ export default function ImageView() {
   const submitAvailable = !!value.length;
 
   const handleSelectImage = async () => {
-    const result = await new Promise((resolve) => {
+    const filePath = await new Promise((resolve) => {
       Taro.chooseImage({
         count: 1,
         sourceType: ["album"],
         complete: (result) => resolve(result),
       });
+    }).then((result: any) => {
+      if (!result.tempFilePaths) return null;
+      return result.tempFilePaths[0];
     });
-    setImageUrl(sample);
-
-    console.log(result);
+    if (!filePath) return;
+    console.log(`select`, filePath);
+    setImageUrl(filePath);
   };
   const handleGenerate = async () => {
-    setImageUrl("");
+    const uploadResult = await uploadFile({
+      filePath: imageUrl,
+    });
+    console.log({ uploadResult });
+
+    const result = await invokeWorkflow({
+      workflow_id: "7436821443897769999",
+      parameters: {
+        image: uploadResult.id,
+        prompt: `把头发变成绿色`,
+      },
+    });
+    console.log(result);
+    // setImageUrl("");
   };
 
   const items = [
@@ -64,7 +83,7 @@ export default function ImageView() {
   const renderEmpty = () => (
     <View
       className={[
-        "w-full aspect-square rounded-3xl flex justify-center items-center",
+        "w-full aspect-square rounded-3xl flex flex-col justify-center items-center",
         "text-xl font-bold text-neutral-300/20",
       ].join(" ")}
       onClick={() => handleSelectImage()}

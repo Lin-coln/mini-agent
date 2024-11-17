@@ -3,7 +3,6 @@ import { getSystemInfo } from "../utils/safeArea";
 
 export function useNavigationBarBounds() {
   const info = getSystemInfo();
-
   const toolbarMiniPadding = 4;
   const toolbarPadding = Math.max(
     // capsule bottom margin

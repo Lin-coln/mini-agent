@@ -1,9 +1,11 @@
-import { useCozeStore } from "../../../stores/useCozeStore";
 import { useState } from "react";
 import { Button, Input, Text, View } from "@tarojs/components";
+import { useCozeStore } from "../../../stores/useCozeStore";
 
 export default function Index() {
-  const { requestCozeApi, token: currentToken } = useCozeStore();
+  const currentToken = useCozeStore((state) => state.token);
+  const invokeWorkflow = useCozeStore((state) => state.invokeWorkflow);
+
   const [token, setToken] = useState(currentToken);
   const [result, setResult] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,7 @@ export default function Index() {
     if (!token) return;
     try {
       setLoading(true);
-      const data = await requestCozeApi({
+      const data = await invokeWorkflow({
         workflow_id: "7436445370878001190",
         bot_id: "7436434756130783286",
         input: "value",

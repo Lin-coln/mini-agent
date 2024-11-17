@@ -1,7 +1,6 @@
 import { CoverView } from "@tarojs/components";
 import Taro, { useRouter } from "@tarojs/taro";
 import "./index.scss";
-import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { APP_CONFIG } from "../utils/constant";
 
@@ -32,9 +31,10 @@ export default function CustomTabBar() {
         <CoverView
           key={index}
           onClick={() => handleItemClick(TAB_ITEMS[index])}
-          className={clsx("tab-bar-item", {
-            "tab-bar-item--active": selected === index,
-          })}
+          className={[
+            "tab-bar-item",
+            selected === index ? "tab-bar-item--active" : "",
+          ].join(" ")}
         >
           <CoverView>{item.text}</CoverView>
         </CoverView>

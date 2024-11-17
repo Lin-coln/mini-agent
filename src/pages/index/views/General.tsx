@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Button, Input, Text, Textarea, View } from "@tarojs/components";
 
 export default function General() {
-  const { requestCozeApi, token: currentToken } = useCozeStore();
+  const currentToken = useCozeStore((state) => state.token);
+  const invokeWorkflow = useCozeStore((state) => state.invokeWorkflow);
+
   const [token, setToken] = useState(currentToken);
   const [value, setValue] = useState("林肯");
   const [result, setResult] = useState("nothing");
@@ -15,7 +17,7 @@ export default function General() {
     if (!token || !value) return;
     try {
       setLoading(true);
-      const result = await requestCozeApi({
+      const result = await invokeWorkflow({
         workflow_id: "7435701312569163813",
         input: value,
         token: token,
