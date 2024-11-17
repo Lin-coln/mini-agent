@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import { PageMeta, View } from "@tarojs/components";
 import { NavigationBar as Nav } from "@tarojs/components";
 import NavigationBar, { useNavigationBarBounds } from "./NavigationBar";
@@ -14,7 +14,7 @@ export default function AppWrapper({
   title,
   children,
 }: {
-  title: string;
+  title: string | ReactElement;
   children: ReactNode;
 }) {
   const dark = true;

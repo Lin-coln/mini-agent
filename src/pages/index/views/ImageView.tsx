@@ -1,13 +1,12 @@
 import { Button, Image, Input, Textarea, View } from "@tarojs/components";
 import debounce from "../../../utils/debounce";
 import { useEffect, useMemo, useRef, useState } from "react";
-import Taro from "@tarojs/taro";
-import { useCozeStore } from "../../../stores/useCozeStore";
+import { useMagicImageStore } from "../../../stores/useMagicImageStore";
 
 export default function ImageView() {
-  const token = useCozeStore((state) => state.token);
-  const invokeWorkflow = useCozeStore((state) => state.invokeWorkflow);
-  const uploadFile = useCozeStore((state) => state.uploadFile);
+  const selectTargetImage = useMagicImageStore((x) => x.selectTargetImage);
+  const generateNewImage = useMagicImageStore((x) => x.generateNewImage);
+
   const [value, setValue] = useState(
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet nemo nisi! Commodi cumque dolore error excepturi exercitationem hic maxime, nam nesciunt, nobis obcaecati quia, repudiandae rerum voluptatum? Debitis, quidem?",
   );
@@ -18,35 +17,16 @@ export default function ImageView() {
     }, 16);
   }, []);
   const [imageUrl, setImageUrl] = useState("");
-  const submitAvailable = !!value.length;
 
   const handleSelectImage = async () => {
-    const filePath = await new Promise((resolve) => {
-      Taro.chooseImage({
-        count: 1,
-        sourceType: ["album"],
-        complete: (result) => resolve(result),
-      });
-    }).then((result: any) => {
-      if (!result.tempFilePaths) return null;
-      return result.tempFilePaths[0];
-    });
+    const filePath = await selectTargetImage();
     if (!filePath) return;
-    console.log(`select`, filePath);
     setImageUrl(filePath);
   };
   const handleGenerate = async () => {
-    const uploadResult = await uploadFile({
-      filePath: imageUrl,
-    });
-    console.log({ uploadResult });
-
-    const result = await invokeWorkflow({
-      workflow_id: "7436821443897769999",
-      parameters: {
-        image: uploadResult.id,
-        prompt: `把头发变成绿色`,
-      },
+    const result = await generateNewImage({
+      image_url: imageUrl,
+      prompt: value,
     });
     console.log(result);
     // setImageUrl("");
@@ -54,12 +34,12 @@ export default function ImageView() {
 
   const items = [
     {
-      label: "选择图片",
+      label: imageUrl ? "切换图片" : "选择图片",
       hidden: editing,
       onClick: handleSelectImage,
     },
     {
-      label: "编辑",
+      label: value.length ? "修改描述" : "添加描述",
       hidden: editing || !imageUrl,
       onClick: () => setVisibleDebounced(!editing),
     },
@@ -71,7 +51,7 @@ export default function ImageView() {
     {
       label: "生成",
       loading: true,
-      hidden: !submitAvailable || editing || !imageUrl,
+      hidden: !value.length || editing || !imageUrl,
       onClick: handleGenerate,
     },
   ];
@@ -176,8 +156,8 @@ function FullscreenInput({ visible, onVisibleChange, value, onValueChange }) {
         `p-4 box-border`,
         "pointer-events-none",
         ...(visible
-          ? ["bg-neutral-900/90", "opacity-100"]
-          : ["bg-neutral-900/90", "opacity-0"]),
+          ? ["bg-neutral-950/95", "opacity-100"]
+          : ["bg-neutral-950/95", "opacity-0"]),
       ].join(" ")}
       // onClick={() => visible && handleSetValue(!visible)}
     >

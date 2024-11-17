@@ -1,5 +1,6 @@
 import { View } from "@tarojs/components";
 import { getSystemInfo } from "../utils/safeArea";
+import { ReactElement, ReactNode } from "react";
 
 export function useNavigationBarBounds() {
   const info = getSystemInfo();
@@ -22,9 +23,29 @@ export function useNavigationBarBounds() {
   };
 }
 
-export default function NavigationBar({ title }) {
+export default function NavigationBar({
+  title,
+}: {
+  title: string | ReactElement;
+}) {
   const { navigationBarPaddingTop, navigationBarHeight, toolbarPadding } =
     useNavigationBarBounds();
+
+  const renderTitle = () =>
+    typeof title === "string" ? (
+      <View
+        className={[
+          `h-full w-full`,
+          `flex flex-row justify-center items-center`,
+          "font-bold",
+        ].join(" ")}
+      >
+        {title}
+      </View>
+    ) : (
+      title
+    );
+
   return (
     <View
       className={[
@@ -42,15 +63,7 @@ export default function NavigationBar({ title }) {
           padding: toolbarPadding,
         }}
       >
-        <View
-          className={[
-            `h-full w-full`,
-            `flex flex-row justify-center items-center`,
-            "font-bold",
-          ].join(" ")}
-        >
-          {title}
-        </View>
+        {renderTitle()}
       </View>
     </View>
   );

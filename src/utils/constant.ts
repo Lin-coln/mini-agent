@@ -1,15 +1,15 @@
-export const Pages = {
+const Pages = {
   Index: {
     title: "首页",
     route: "pages/index/index",
   },
-  // Elements: {
-  //   title: "元素",
-  //   route: "pages/elements/index",
-  // },
   Settings: {
     title: "设置",
     route: "pages/settings/index",
+  },
+  Others: {
+    title: "其他",
+    route: "pages/others/index",
   },
 };
 
