@@ -16,6 +16,12 @@ export async function promiseWithToast<T = any>(
         ? promiseOrAsyncFunc()
         : promiseOrAsyncFunc;
     result = await promise;
+  } catch (e) {
+    Taro.showToast({
+      title: e.message,
+      icon: "error",
+      duration: 5000,
+    });
   } finally {
     Taro.hideLoading();
   }

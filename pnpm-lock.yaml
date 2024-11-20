@@ -59,6 +59,9 @@ dependencies:
   react-dom:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react-dom@18.3.1(react@18.3.1)
+  text-encoding-shim:
+    specifier: ^1.0.5
+    version: registry.npmmirror.com/text-encoding-shim@1.0.5
   zustand:
     specifier: ^5.0.1
     version: registry.npmmirror.com/zustand@5.0.1(@types/react@18.3.12)(react@18.3.1)
@@ -121,6 +124,9 @@ devDependencies:
   eslint-plugin-react-hooks:
     specifier: ^4.2.0
     version: registry.npmmirror.com/eslint-plugin-react-hooks@4.6.2(eslint@8.57.1)
+  node-fetch:
+    specifier: ^3.3.2
+    version: registry.npmmirror.com/node-fetch@3.3.2
   postcss:
     specifier: ^8.4.18
     version: registry.npmmirror.com/postcss@8.4.48
@@ -6046,6 +6052,13 @@ packages:
     version: 0.2.2
     dev: true
 
+  registry.npmmirror.com/data-uri-to-buffer@4.0.1:
+    resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz}
+    name: data-uri-to-buffer
+    version: 4.0.1
+    engines: {node: '>= 12'}
+    dev: true
+
   registry.npmmirror.com/data-urls@5.0.0:
     resolution: {integrity: sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/data-urls/-/data-urls-5.0.0.tgz}
     name: data-urls
@@ -7455,6 +7468,16 @@ packages:
       pend: registry.npmmirror.com/pend@1.2.0
     dev: true
 
+  registry.npmmirror.com/fetch-blob@3.2.0:
+    resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fetch-blob/-/fetch-blob-3.2.0.tgz}
+    name: fetch-blob
+    version: 3.2.0
+    engines: {node: ^12.20 || >= 14.13}
+    dependencies:
+      node-domexception: registry.npmmirror.com/node-domexception@1.0.0
+      web-streams-polyfill: registry.npmmirror.com/web-streams-polyfill@3.3.3
+    dev: true
+
   registry.npmmirror.com/figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/figures/-/figures-3.2.0.tgz}
     name: figures
@@ -7667,6 +7690,15 @@ packages:
       asynckit: registry.npmmirror.com/asynckit@0.4.0
       combined-stream: registry.npmmirror.com/combined-stream@1.0.8
       mime-types: registry.npmmirror.com/mime-types@2.1.35
+    dev: true
+
+  registry.npmmirror.com/formdata-polyfill@4.0.10:
+    resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz}
+    name: formdata-polyfill
+    version: 4.0.10
+    engines: {node: '>=12.20.0'}
+    dependencies:
+      fetch-blob: registry.npmmirror.com/fetch-blob@3.2.0
     dev: true
 
   registry.npmmirror.com/forwarded@0.2.0:
@@ -10454,10 +10486,28 @@ packages:
     requiresBuild: true
     optional: true
 
+  registry.npmmirror.com/node-domexception@1.0.0:
+    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-domexception/-/node-domexception-1.0.0.tgz}
+    name: node-domexception
+    version: 1.0.0
+    engines: {node: '>=10.5.0'}
+    dev: true
+
   registry.npmmirror.com/node-fetch-native@1.6.4:
     resolution: {integrity: sha512-IhOigYzAKHd244OC0JIMIUrjzctirCmPkaIfhDeGcEETWof5zKYUW7e7MYvChGWh/4CJeXEgsRyGzuF334rOOQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-fetch-native/-/node-fetch-native-1.6.4.tgz}
     name: node-fetch-native
     version: 1.6.4
+    dev: true
+
+  registry.npmmirror.com/node-fetch@3.3.2:
+    resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-fetch/-/node-fetch-3.3.2.tgz}
+    name: node-fetch
+    version: 3.3.2
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      data-uri-to-buffer: registry.npmmirror.com/data-uri-to-buffer@4.0.1
+      fetch-blob: registry.npmmirror.com/fetch-blob@3.2.0
+      formdata-polyfill: registry.npmmirror.com/formdata-polyfill@4.0.10
     dev: true
 
   registry.npmmirror.com/node-forge@1.3.1:
@@ -13780,6 +13830,12 @@ packages:
       commander: registry.npmmirror.com/commander@2.20.3
       source-map-support: registry.npmmirror.com/source-map-support@0.5.21
 
+  registry.npmmirror.com/text-encoding-shim@1.0.5:
+    resolution: {integrity: sha512-H7yYW+jRn4yhu60ygZ2f/eMhXPITRt4QSUTKzLm+eCaDsdX8avmgWpmtmHAzesjBVUTAypz9odu5RKUjX5HNYA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/text-encoding-shim/-/text-encoding-shim-1.0.5.tgz}
+    name: text-encoding-shim
+    version: 1.0.5
+    dev: false
+
   registry.npmmirror.com/text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/text-table/-/text-table-0.2.0.tgz}
     name: text-table
@@ -14490,6 +14546,13 @@ packages:
       - magicast
       - supports-color
       - tailwindcss
+    dev: true
+
+  registry.npmmirror.com/web-streams-polyfill@3.3.3:
+    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz}
+    name: web-streams-polyfill
+    version: 3.3.3
+    engines: {node: '>= 8'}
     dev: true
 
   registry.npmmirror.com/webidl-conversions@7.0.0:

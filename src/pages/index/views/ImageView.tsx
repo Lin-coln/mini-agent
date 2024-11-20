@@ -25,14 +25,14 @@ export default function ImageView() {
     setImageUrl(filePath);
   };
   const handleGenerate = async () => {
-    const imageUrl = await promiseWithToast(
+    const result = await promiseWithToast(
       { loading: "generating..." },
       generateNewImage({
-        image_url: "imageUrl",
+        image_url: imageUrl,
         prompt: value,
       }),
     );
-    setImageUrl(imageUrl);
+    setImageUrl(result);
   };
 
   const items = [

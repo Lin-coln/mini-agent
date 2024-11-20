@@ -1,7 +1,6 @@
 import { useCozeStore } from "../../../stores/useCozeStore";
 import { useState } from "react";
 import { Text, View } from "@tarojs/components";
-import MiniInput from "../../../components/MiniInput";
 import MiniButton from "../../../components/MiniButton";
 import MiniTextarea from "../../../components/MiniTextarea";
 
