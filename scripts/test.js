@@ -12,7 +12,7 @@ async function main() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      bot_id: `7438451296971341860`,
+      bot_id: `7439014739734233097`,
       // bot_id: `7436789319987904547`,
       user_id: `123456789`,
       stream: true,
@@ -23,7 +23,7 @@ async function main() {
           content_type: "object_string",
           content: JSON.stringify([
             { type: "image", file_id: `7439011189184610339` },
-            // { type: "text", text: `test` },
+            { type: "text", text: `我把头发颜色改为克莱因蓝` },
           ]),
         },
       ],
@@ -64,7 +64,7 @@ async function main() {
       if (event === `conversation.message.delta`) return;
       console.log(event, data);
       if (event === `conversation.message.completed`) {
-        if (data.type === `tool_response`) {
+        if (data.type === `answer`) {
           result.content = data.content;
         }
       }
