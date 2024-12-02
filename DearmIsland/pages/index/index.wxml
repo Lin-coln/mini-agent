@@ -1,0 +1,28 @@
+<view class="container">
+  <!-- 背景图片 -->
+  <image class="bg-image" src="/images/dream-island2.png" mode="aspectFill"></image>
+  
+  <!-- 欢迎标语 -->
+  <view class="welcome">
+    <text class="title">AI幻乐岛</text>
+    <text class="subtitle">和AI一起快乐成长</text>
+  </view>
+
+  <!-- 功能区域 -->
+  <view class="feature-container">
+    <view class="feature-card" wx:for="{{features}}" wx:key="id"
+          data-id="{{item.id}}" bindtap="handleFeatureClick">
+      <image class="feature-icon" src="{{item.icon}}" mode="aspectFit"></image>
+      <view class="feature-info">
+        <text class="feature-name">{{item.name}}</text>
+        <text class="feature-desc">{{item.desc}}</text>
+      </view>
+      <view class="feature-arrow">></view>
+    </view>
+  </view>
+
+  <!-- 装饰元素 -->
+  <view class="cloud cloud1"></view>
+  <view class="cloud cloud2"></view>
+  <view class="balloon"></view>
+</view> 

@@ -1,0 +1,26 @@
+<view class="chat-container">
+  <image class="bg-image" src="/images/ocean-bg.png" mode="aspectFill"></image>
+  
+  <scroll-view class="chat-list" scroll-y="true" scroll-into-view="{{scrollToView}}">
+    <view class="chat-item {{item.type}}" wx:for="{{chatList}}" wx:key="index" id="msg-{{index}}">
+      <view class="chat-bubble">{{item.content}}</view>
+    </view>
+  </scroll-view>
+  
+  <view class="input-container">
+    <input class="input-box" 
+           type="text" 
+           value="{{inputText}}" 
+           placeholder="请输入消息" 
+           bindinput="onInput"
+           bindconfirm="sendMessage"
+           confirm-type="send"
+           disabled="{{isWaiting}}"
+    />
+    <view class="send-btn" 
+          bindtap="sendMessage" 
+          style="opacity: {{!inputText.trim() || isWaiting ? 0.5 : 1}}">
+      发送
+    </view>
+  </view>
+</view>
